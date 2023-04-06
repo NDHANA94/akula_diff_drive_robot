@@ -42,8 +42,8 @@
         <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/tracer_wheel.dae"/>
     </xacro:macro>
 
-    <xacro:macro name="akula_rig">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/tracer_sensor_rig.stl" scale="0.001 0.001 0.001"/>
+    <xacro:macro name="akula_fin_link">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/fin.stl" scale="0.001 0.001 0.001"/>
     </xacro:macro>
 
 
@@ -302,13 +302,13 @@
         </collision>
     </link>
 
-    <link name="akula_rig_link">
+    <link name="fin_link">
         <visual>
             <geometry>
-                <xacro:akula_rig></xacro:akula_rig>
+                <xacro:akula_fin_link></xacro:akula_fin_link>
             </geometry>
-            <material name="rig">
-                <color rgba="0.1 0.1 0.1 1"/>
+            <material name="fin">
+                <color rgba="0.3 0.3 0.6 1"/>
             </material>
         </visual>
         <inertial>
@@ -318,7 +318,7 @@
         </inertial>
         <collision>
             <geometry>
-                <xacro:akula_rig></xacro:akula_rig>
+                <xacro:akula_fin_link></xacro:akula_fin_link>
             </geometry>
         </collision>
     </link>

@@ -13,10 +13,10 @@
         <child link="inertial_link"/>
     </joint>
 
-    <joint name="rig_joint" type="fixed">
-        <origin xyz="0 0 0.015" rpy="0 0 0"/>
+    <joint name="fin_joint" type="fixed">
+        <origin xyz="0 0 -0.15" rpy="0 0 -1.5708"/>
         <parent link="base_link"/>
-        <child link="akula_rig_link"/>
+        <child link="fin_link"/>
     </joint>
 
     <!-- ************************************************** -->
