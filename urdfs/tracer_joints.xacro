@@ -114,4 +114,18 @@
         <axis xyz="0 1 0"/>
         <dynamics damping="0.2"/>
     </joint>
+
+
+    <!-- VLP16 lidar joint -->
+    <joint name="vlp16_fin_base_joint" type="fixed" >
+      <origin xyz="0 -0.15 0.83" rpy="0 0 3.14" />
+      <parent link="fin_link" />
+      <child link="vlp16_base_link"/>
+    </joint>
+
+    <joint name="vlp16_base_scan_joint" type="fixed" >
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="vlp16_base_link" />
+      <child link="vlp16_scan_link"/>
+    </joint>
 </robot>

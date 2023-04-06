@@ -46,6 +46,16 @@
         <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/fin.stl" scale="0.001 0.001 0.001"/>
     </xacro:macro>
 
+    <xacro:macro name="vlp16_base">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/VLP16/VLP16_base_1.stl"/>
+    </xacro:macro>
+    <xacro:macro name="vlp16_scan">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/VLP16/VLP16_scan.stl"/>
+    </xacro:macro>
+    <xacro:macro name="vlp16_top">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/VLP16/VLP16_base_2.stl"/>
+    </xacro:macro>
+
 
 
     <!-- Initial Link -->
@@ -308,7 +318,7 @@
                 <xacro:akula_fin_link></xacro:akula_fin_link>
             </geometry>
             <material name="fin">
-                <color rgba="0.3 0.3 0.6 1"/>
+                <color rgba="0.15 0.15 0.15 1"/>
             </material>
         </visual>
         <inertial>
@@ -322,4 +332,58 @@
             </geometry>
         </collision>
     </link>
+
+    <link name="vlp16_base_link">
+        <inertial>
+        <mass value="0.83"/>
+        <origin xyz="0 0 0.03585"/>
+        <inertia ixx="${(0.83 * (3.0*0.0516*0.0516 + 0.0717*0.0717)) / 12.0}" ixy="0" ixz="0"
+          iyy="${(0.83 * (3.0*0.0516*0.0516 + 0.0717*0.0717)) / 12.0}" iyz="0"
+          izz="${0.5 * 0.83 * (0.0516*0.0516)}"/>
+      </inertial>
+      <visual>
+        <geometry>
+            <xacro:vlp16_base></xacro:vlp16_base>
+        </geometry>
+        <material name="base1">
+                <color rgba="0.7 0.7 0.7 1"/>
+        </material>
+      </visual>
+      <visual>
+        <geometry>
+            <xacro:vlp16_top></xacro:vlp16_top>
+        </geometry>
+        <material name="base2">
+                <color rgba="0.7 0.7 0.7 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0.03585"/>
+        <geometry>
+          <cylinder radius="0.0516" length="0.0717"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="vlp16_scan_link">
+        <visual>
+            <geometry>
+                <xacro:vlp16_scan></xacro:vlp16_scan>
+            </geometry>
+            <material name="scan">
+                <color rgba="0.1 0.1 0.3 1"/>
+            </material>
+        </visual>
+        <inertial>
+            <mass value="0.01" />
+            <origin xyz="0 0 0.03585" />
+            <inertia ixx="1e-7" ixy="0" ixz="0" iyy="1e-7" iyz="0" izz="1e-7"/>
+        </inertial>
+        <collision>
+            <geometry>
+                <xacro:vlp16_scan></xacro:vlp16_scan>
+            </geometry>
+        </collision>
+    </link>
+
 </robot>
