@@ -12,13 +12,20 @@
     <!-- joints -->
     <xacro:include filename="$(find tracer_ign_sim)/urdfs/tracer_joints.xacro" />
     
+
     <!-- ros2 control -->
     <xacro:include filename="$(find tracer_ign_sim)/urdfs/ros2_control.xacro"/>
 
-    <!-- <xacro:include filename="$(find tracer_ign_sim)/urdfs/gazebo.xacro"/> -->
+    
 
-    <!-- <gazebo reference="L_wheel">
-        <mu1>0.2</mu1>
-    </gazebo> -->
+    <!-- gazebo -->
+    <xacro:include filename="$(find tracer_ign_sim)/urdfs/gazebo.xacro"/>
+
+    <!-- lidar -->
+    <xacro:include filename="$(find tracer_ign_sim)/urdfs/lidar.xacro"/>
+
+    <!-- imu -->
+    <xacro:include filename="$(find tracer_ign_sim)/urdfs/imu.xacro"/>
+
 
 </robot>

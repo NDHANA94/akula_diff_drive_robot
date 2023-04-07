@@ -65,6 +65,14 @@ def generate_launch_description():
     # use time
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
 
+    # lidar ros2 bridge
+    lidar_bridge = Node(
+        package='ros_ign_bridge',
+        executable='parameter_bridge',
+        arguments=['/lidar@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan'],
+        output='screen'
+    )
+
     return LaunchDescription([
         # launch ignition gazebo
         IncludeLaunchDescription(

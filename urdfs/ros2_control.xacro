@@ -63,13 +63,14 @@
         </joint>
     </ros2_control>
 
-    
-
     <gazebo>
-        <!-- <plugin filename="libignition-gazebo-joint-state-publisher-system.so" name="ignition::gazebo::systems::JointStatePublisher"/> -->
-        <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
-            <parameters>$(find tracer_ign_sim)/config/tracer_controller_velocity.yaml</parameters>
+        <plugin 
+          filename="ign_ros2_control-system" 
+          name="ign_ros2_control::IgnitionROS2ControlPlugin">
+          <parameters>$(find tracer_ign_sim)/config/tracer_controller_velocity.yaml</parameters>
         </plugin>
     </gazebo>
+
+    
 
 </robot>
