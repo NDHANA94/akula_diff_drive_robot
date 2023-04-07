@@ -5,7 +5,7 @@
 
     <xacro:property name="M_PI" value="3.1415926535897931" />
     <xacro:property name="name" value="velodyne" />
-    <xacro:property name="topic" value="vlp16" />
+    <xacro:property name="topic" value="lidar" />
     <xacro:property name="organize_cloud" value="false" />
     <xacro:property name="hz" value="10" />
     <xacro:property name="lasers" value="16" />
@@ -21,7 +21,7 @@
     <gazebo reference="vlp16_scan">
         <xacro:if value="${gpu}">
             <sensor name="lidar_ray" type="gpu_ray">
-                <pose relative_to='vlp16_scan'>0 0 0 0 0 0</pose>
+                <pose>0 0 0 0 0 0</pose>
                 <topic>${topic}</topic>
                 <update_rate>${hz}</update_rate>
                 <ray>
@@ -63,7 +63,7 @@
         </xacro:if>
         <xacro:unless value="${gpu}">
             <sensor name="lidar_ray" type="lidar">
-                <pose relative_to='vlp16_scan'>0 0 0 0 0 0</pose>
+                <pose>0 0 0 0 0 0</pose>
                 <topic>${topic}</topic>
                 <update_rate>${hz}</update_rate>
                 <ray>

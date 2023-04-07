@@ -25,7 +25,7 @@
     <xacro:include filename="$(find tracer_ign_sim)/urdfs/lidar.xacro"/>
 
     <!-- imu -->
-    <xacro:include filename="$(find tracer_ign_sim)/urdfs/imu.xacro"/>
+    <!-- <xacro:include filename="$(find tracer_ign_sim)/urdfs/imu.xacro"/> -->
 
 
 </robot>

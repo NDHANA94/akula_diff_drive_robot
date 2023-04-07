@@ -55,6 +55,12 @@ def generate_launch_description():
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'start', 'tracer_controller'],
         output='screen'
     )
+
+    lidar_static_tf_pub = ExecuteProcess(
+        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "vlp16_scan", "tracer/base_link/lidar_ray"],
+        output='screen'
+    )
+    
     # publish time
     clock_bridge = Node(
         package='ros_ign_bridge',
@@ -66,10 +72,17 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
 
     # lidar ros2 bridge
-    lidar_bridge = Node(
+    bridge_lidar = Node(
         package='ros_ign_bridge',
         executable='parameter_bridge',
-        arguments=['/lidar@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan'],
+        arguments=['/lidar@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan'],
+        output='screen'
+    )
+
+    bridge_lidar_points = Node(
+        package='ros_ign_bridge',
+        executable='parameter_bridge',
+        arguments=['/lidar/points@sensor_msgs/msg/PointCloud2@ignition.msgs.PointCloudPacked'],
         output='screen'
     )
 
@@ -97,6 +110,9 @@ def generate_launch_description():
         clock_bridge,
         node_robot_state_publisher,
         ign_spawn_entity,
+        lidar_static_tf_pub,
+        bridge_lidar,
+        bridge_lidar_points,
         # Launch arguments
         DeclareLaunchArgument(
             'use_sim_time',
