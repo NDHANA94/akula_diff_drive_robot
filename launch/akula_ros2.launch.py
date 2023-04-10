@@ -57,7 +57,7 @@ def generate_launch_description():
     )
 
     sim_lidar_static_tf_pub = ExecuteProcess(
-        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "vlp16_scan", "tracer/base_link/velodyne-VLP16"],
+        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "vlp16_scan", "Akula/base_link/velodyne-VLP16"],
         output='screen'
     )
     real_lidar_static_tf_pub = ExecuteProcess(

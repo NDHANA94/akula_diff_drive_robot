@@ -5,7 +5,7 @@
      * Created: 10.03.2023 
    ======================================== 
 -->
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="Akula">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="akula">
     <origin xyz="0 0 0.3" rpy="0 0 0"/>
     <!-- links -->
     <xacro:include filename="$(find akula_ign_sim)/urdfs/akula_links.xacro" />

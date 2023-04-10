@@ -67,7 +67,7 @@
         <plugin 
           filename="ign_ros2_control-system" 
           name="ign_ros2_control::IgnitionROS2ControlPlugin">
-          <parameters>$(find tracer_ign_sim)/config/tracer_controller_velocity.yaml</parameters>
+          <parameters>$(find akula_ign_sim)/config/tracer_controller_velocity.yaml</parameters>
         </plugin>
     </gazebo>
 

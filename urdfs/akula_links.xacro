@@ -9,41 +9,41 @@
 
     <!-- load meshes -->
     <xacro:macro name="base_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/tracer_base_link_no_wheel.dae"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/tracer_base_link_no_wheel.dae"/>
     </xacro:macro>
     <xacro:macro name="fl_castor_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
     </xacro:macro>
     <xacro:macro name="fr_castor_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
     </xacro:macro>
     <xacro:macro name="rl_castor_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
     </xacro:macro>
     <xacro:macro name="rr_castor_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
     </xacro:macro>
     <xacro:macro name="fl_wheel_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor.dae"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/castor.dae"/>
     </xacro:macro>
     <xacro:macro name="fr_wheel_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor.dae"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/castor.dae"/>
     </xacro:macro>
     <xacro:macro name="rl_wheel_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor.dae"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/castor.dae"/>
     </xacro:macro>
     <xacro:macro name="rr_wheel_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor.dae"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/castor.dae"/>
     </xacro:macro>
     <xacro:macro name="L_wheel_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/tracer_wheel.dae"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/tracer_wheel.dae"/>
     </xacro:macro>
     <xacro:macro name="R_wheel_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/tracer_wheel.dae"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/tracer_wheel.dae"/>
     </xacro:macro>
 
     <xacro:macro name="akula_fin_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/fin.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/fin.stl" scale="0.001 0.001 0.001"/>
     </xacro:macro>
 
     
@@ -333,13 +333,13 @@
 
     <!-- Velodyne VLP16 -->
     <xacro:macro name="vlp16_base">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/VLP16/VLP16_base_1.stl"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/VLP16/VLP16_base_1.stl"/>
     </xacro:macro>
     <xacro:macro name="vlp16_scan">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/VLP16/VLP16_scan.stl"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/VLP16/VLP16_scan.stl"/>
     </xacro:macro>
     <xacro:macro name="vlp16_top">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/VLP16/VLP16_base_2.stl"/>
+        <mesh filename="file://$(find akula_ign_sim)/models/tracer/meshes/VLP16/VLP16_base_2.stl"/>
     </xacro:macro>
     
     <link name="vlp16_base_link">
