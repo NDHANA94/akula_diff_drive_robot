@@ -5,7 +5,7 @@
       * Created: 10.03.2023  
     ========================================  
 -->
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ros2_control">
     
     <ros2_control name="IgnitionSystem" type="system">
         <hardware>

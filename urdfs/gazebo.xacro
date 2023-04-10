@@ -6,8 +6,6 @@
     ========================================  
 -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="gazebo">
-
-    <xacro:property name="M_PI" value="3.1415926535897931" />
     
     <gazebo reference="fl_wheel_link">
         <mu1>1</mu1>
@@ -36,11 +34,5 @@
         <slip1>0</slip1>
         <slip2>0</slip2>
     </gazebo>
-
-
-
-    
-
-   
 
 </robot>

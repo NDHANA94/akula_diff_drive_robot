@@ -5,7 +5,7 @@
       * Created: 10.03.2023  
     ========================================  
 -->
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Akula links">
 
     <!-- load meshes -->
     <xacro:macro name="base_link">

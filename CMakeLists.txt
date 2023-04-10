@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(tracer_ign_sim)
+project(akula_ign_sim)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -45,6 +45,7 @@ install(DIRECTORY
   models
   worlds
   urdfs
+  rviz
   DESTINATION share/${PROJECT_NAME}/
   ) 
 

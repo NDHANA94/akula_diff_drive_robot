@@ -22,10 +22,10 @@ import xacro
 
 def generate_launch_description():
     pkg_ros_ign_gazebo = get_package_share_directory('ros_ign_gazebo')
-    pkg_tracer_ign = get_package_share_directory('tracer_ign_sim')
-
+    this_pkg = get_package_share_directory('akula_ign_sim')
+    rviz_config_file = os.path.join(this_pkg, 'rviz', 'default.rviz')
     # --------- xacro process -------------------------------------------------------------------------
-    xacro_file = os.path.join(get_package_share_directory('tracer_ign_sim'), 'urdfs/tracer.urdf.xacro')
+    xacro_file = os.path.join(this_pkg, 'urdfs/akula.urdf.xacro')
     doc = xacro.parse(open(xacro_file))
     xacro.process_doc(doc)
     params = {'robot_description': doc.toxml(), 'use_sim_time':True}
@@ -41,7 +41,7 @@ def generate_launch_description():
         package='ros_ign_gazebo',
         executable='create',
         output='screen',
-        arguments=['-string', doc.toxml(), '-name', 'tracer',
+        arguments=['-string', doc.toxml(), '-name', 'Akula',
                    '-x', '0',
                    '-y', '0',
                    '-z', '0.2'])
@@ -56,8 +56,12 @@ def generate_launch_description():
         output='screen'
     )
 
-    lidar_static_tf_pub = ExecuteProcess(
-        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "vlp16_scan", "tracer/base_link/lidar_ray"],
+    sim_lidar_static_tf_pub = ExecuteProcess(
+        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "vlp16_scan", "tracer/base_link/velodyne-VLP16"],
+        output='screen'
+    )
+    real_lidar_static_tf_pub = ExecuteProcess(
+        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "-1.57079632679", "0", "0", "vlp16_scan", "velodyne"],
         output='screen'
     )
     
@@ -75,14 +79,21 @@ def generate_launch_description():
     bridge_lidar = Node(
         package='ros_ign_bridge',
         executable='parameter_bridge',
-        arguments=['/lidar@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan'],
+        arguments=['/velodyne@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan'],
         output='screen'
     )
 
     bridge_lidar_points = Node(
         package='ros_ign_bridge',
         executable='parameter_bridge',
-        arguments=['/lidar/points@sensor_msgs/msg/PointCloud2@ignition.msgs.PointCloudPacked'],
+        arguments=['/velodyne/points@sensor_msgs/msg/PointCloud2@ignition.msgs.PointCloudPacked'],
+        output='screen'
+    )
+
+    run_rviz2 = Node(
+        package='rviz2',
+        executable='rviz2',
+        arguments=['-d', rviz_config_file],
         output='screen'
     )
 
@@ -110,9 +121,11 @@ def generate_launch_description():
         clock_bridge,
         node_robot_state_publisher,
         ign_spawn_entity,
-        lidar_static_tf_pub,
+        sim_lidar_static_tf_pub,
+        real_lidar_static_tf_pub,
         bridge_lidar,
         bridge_lidar_points,
+        run_rviz2,
         # Launch arguments
         DeclareLaunchArgument(
             'use_sim_time',

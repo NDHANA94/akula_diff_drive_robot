@@ -5,7 +5,7 @@
       * Created: 10.03.2023  
     ========================================  
 -->
-<robot>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Akula joints">
     
     <joint name="base_joint" type="fixed">
         <origin xyz="0 0 0" rpy="0 0 0"/>
