@@ -1,7 +1,9 @@
-# Akula ignition simulation
+# Akula ignition simulation with LIDAR (VLP-16)
 Akula (Shark) robot is based on Tracer differential drive robot. 
 
 This package is created and tested only with ros2-foxy version!
+
+![image](images/Akula_rviz.png)
 
 ### Setup
 * Install ros2-foxy: https://docs.ros.org/en/foxy/Installation.html
