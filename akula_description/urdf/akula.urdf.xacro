@@ -8,21 +8,21 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="akula">
     <origin xyz="0 0 0.3" rpy="0 0 0"/>
     <!-- links -->
-    <xacro:include filename="$(find akula_ign_sim)/urdfs/akula_links.xacro" />
+    <xacro:include filename="$(find akula_description)/urdf/akula_links.xacro" />
     <!-- joints -->
-    <xacro:include filename="$(find akula_ign_sim)/urdfs/akula_joints.xacro" />
+    <xacro:include filename="$(find akula_description)/urdf/akula_joints.xacro" />
     
 
     <!-- ros2 control -->
-    <xacro:include filename="$(find akula_ign_sim)/urdfs/ros2_control.xacro"/>
+    <xacro:include filename="$(find akula_description)/urdf/ros2_control.xacro"/>
 
     
 
     <!-- gazebo -->
-    <xacro:include filename="$(find akula_ign_sim)/urdfs/gazebo.xacro"/>
+    <xacro:include filename="$(find akula_description)/urdf/gazebo.xacro"/>
 
     <!-- lidar -->
-    <xacro:include filename="$(find akula_ign_sim)/urdfs/velodyne_VLP16.xacro"/>
+    <xacro:include filename="$(find akula_description)/urdf/velodyne_VLP16.xacro"/>
 
     <!-- imu -->
     <!-- <xacro:include filename="$(find tracer_ign_sim)/urdfs/imu.xacro"/> -->

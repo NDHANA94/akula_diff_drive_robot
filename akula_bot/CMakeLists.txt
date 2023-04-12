@@ -42,9 +42,7 @@ install(DIRECTORY
   ign
   config
   launch
-  models
   worlds
-  urdfs
   rviz
   DESTINATION share/${PROJECT_NAME}/
   ) 

@@ -23,9 +23,10 @@ import xacro
 def generate_launch_description():
     pkg_ros_ign_gazebo = get_package_share_directory('ros_ign_gazebo')
     this_pkg = get_package_share_directory('akula_ign_sim')
+    akula_description_pkg = get_package_share_directory('akula_description')
     rviz_config_file = os.path.join(this_pkg, 'rviz', 'default.rviz')
     # --------- xacro process -------------------------------------------------------------------------
-    xacro_file = os.path.join(this_pkg, 'urdfs/akula.urdf.xacro')
+    xacro_file = os.path.join(akula_description_pkg, 'urdf/akula.urdf.xacro')
     doc = xacro.parse(open(xacro_file))
     xacro.process_doc(doc)
     params = {'robot_description': doc.toxml(), 'use_sim_time':True}
