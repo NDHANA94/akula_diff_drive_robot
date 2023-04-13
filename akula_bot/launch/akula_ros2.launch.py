@@ -58,7 +58,7 @@ def generate_launch_description():
     )
 
     sim_lidar_static_tf_pub = ExecuteProcess(
-        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "vlp16_scan", "Akula/base_link/velodyne-VLP16"],
+        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "vlp16_scan", "Akula/base_link/VLP16"],
         output='screen'
     )
     real_lidar_static_tf_pub = ExecuteProcess(
@@ -66,13 +66,22 @@ def generate_launch_description():
         output='screen'
     )
     
-    # publish time
+    #  time bridge
     clock_bridge = Node(
         package='ros_ign_bridge',
         executable='parameter_bridge',
         arguments=['/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock'],
         output='screen'
     )
+
+    # imu bridge
+    imu_bridge = Node(
+        package='ros_ign_bridge',
+        executable='parameter_bridge',
+        arguments=['/imu@sensor_msgs/msg/Imu[ignition.msgs.IMU'],
+        output='screen'
+    )
+
     # use time
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
 
@@ -126,6 +135,7 @@ def generate_launch_description():
         real_lidar_static_tf_pub,
         bridge_lidar,
         bridge_lidar_points,
+        imu_bridge,
         run_rviz2,
         # Launch arguments
         DeclareLaunchArgument(

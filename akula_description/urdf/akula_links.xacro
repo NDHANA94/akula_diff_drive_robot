@@ -316,7 +316,7 @@
                 <xacro:akula_fin_link></xacro:akula_fin_link>
             </geometry>
             <material name="fin">
-                <color rgba="0.15 0.15 0.15 1"/>
+                <color rgba="0.058 0.058 0.058 1"/>
             </material>
         </visual>
         <inertial>

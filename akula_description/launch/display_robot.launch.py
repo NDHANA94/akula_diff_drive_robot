@@ -48,9 +48,15 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file],
         output='screen')
     
+    sim_lidar_static_tf_pub = ExecuteProcess(
+        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "-1.57079632679", "0", "0", "vlp16_scan", "velodyne"], #Akula/base_link/velodyne-VLP16
+        output='screen'
+    )
+    
     return LaunchDescription([
         robot_state_publisher_node,
         joint_state_publisher_gui,
+        sim_lidar_static_tf_pub,
         run_rviz2
     ])
     

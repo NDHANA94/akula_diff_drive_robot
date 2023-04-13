@@ -25,7 +25,10 @@
     <xacro:include filename="$(find akula_description)/urdf/velodyne_VLP16.xacro"/>
 
     <!-- imu -->
-    <!-- <xacro:include filename="$(find tracer_ign_sim)/urdfs/imu.xacro"/> -->
+    <xacro:include filename="$(find akula_description)/urdf/imu.xacro"/>
+
+    <!-- camera -->
+    <xacro:include filename="$(find akula_description)/urdf/camera.xacro"/>
 
 
 </robot>
