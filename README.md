@@ -5,6 +5,11 @@ This package is created and tested only with `ros2-foxy` version!
 
 ![image](images/Akula_rviz.png)
 
+### included sensors:
+* IMU sensor
+* Camera sensor
+* Velodyne VLP16 LIDAR sensor
+
 ### Setup
 * Install ros2-foxy: https://docs.ros.org/en/foxy/Installation.html
 * Install ignition fortress: https://gazebosim.org/docs/fortress/install_ubuntu
