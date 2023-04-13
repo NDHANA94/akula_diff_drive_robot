@@ -82,6 +82,22 @@ def generate_launch_description():
         output='screen'
     )
 
+    # camera bridge
+    camera_bridge = Node(
+        package='ros_ign_bridge',
+        executable='parameter_bridge',
+        arguments=['/camera@sensor_msgs/msg/Image[ignition.msgs.Image'],
+        output='screen'
+    )
+
+    # camera bridge
+    camera_info_bridge = Node(
+        package='ros_ign_bridge',
+        executable='parameter_bridge',
+        arguments=['/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo'],
+        output='screen'
+    )
+
     # use time
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
 
@@ -133,9 +149,9 @@ def generate_launch_description():
         ign_spawn_entity,
         sim_lidar_static_tf_pub,
         real_lidar_static_tf_pub,
-        bridge_lidar,
-        bridge_lidar_points,
+        bridge_lidar, bridge_lidar_points,
         imu_bridge,
+        camera_bridge, camera_info_bridge,
         run_rviz2,
         # Launch arguments
         DeclareLaunchArgument(
