@@ -105,14 +105,14 @@ def generate_launch_description():
     bridge_lidar = Node(
         package='ros_ign_bridge',
         executable='parameter_bridge',
-        arguments=['/velodyne@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan'],
+        arguments=['/vlp16_sim_scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan'],
         output='screen'
     )
 
     bridge_lidar_points = Node(
         package='ros_ign_bridge',
         executable='parameter_bridge',
-        arguments=['/velodyne/points@sensor_msgs/msg/PointCloud2@ignition.msgs.PointCloudPacked'],
+        arguments=['/vlp16_sim_scan/points@sensor_msgs/msg/PointCloud2@ignition.msgs.PointCloudPacked'],
         output='screen'
     )
 

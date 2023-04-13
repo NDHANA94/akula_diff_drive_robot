@@ -9,8 +9,8 @@
 
 
     <xacro:property name="M_PI" value="3.1415926535897931" />
-    <xacro:property name="name" value="velodyne" />
-    <xacro:property name="topic" value="/velodyne" />
+    <xacro:property name="name" value="velodyne_sim" />
+    <xacro:property name="topic" value="/vlp16_sim_scan" />
     <xacro:property name="organize_cloud" value="false" />
     <xacro:property name="hz" value="10" />
     <xacro:property name="lasers" value="16" />
@@ -84,7 +84,7 @@
         </inertial>
         <collision>
             <geometry>
-                <xacro:vlp16_scan></xacro:vlp16_scan>
+                <sphere radius="0"/>
             </geometry>
         </collision>
     </link>
@@ -109,6 +109,7 @@
                 <pose>0 0 0 0 0 0</pose>
                 <topic>${topic}</topic>
                 <update_rate>${hz}</update_rate>
+                <frame_name>${name}</frame_name>
                 <ray>
                     <scan>
                         <horizontal>
@@ -185,6 +186,7 @@
                     filename="libignition-gazebo-sensors-system.so" 
                     name="ignition::gazebo::systems::Sensors">
                     <render_engine>ogre</render_engine>
+                    <frame_name>${name}</frame_name>
                 </plugin>
             </sensor>
         </xacro:unless>
