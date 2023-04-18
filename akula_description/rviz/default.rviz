@@ -6,6 +6,10 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /TF1
+        - /TF1/Tree1
+        - /TF1/Tree1/map1/odom1
+        - /TF1/Tree1/map1/odom1/base_footprint1
       Splitter Ratio: 0.5
     Tree Height: 787
   - Class: rviz_common/Selection
@@ -233,7 +237,7 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 112
+      Max Intensity: 132
       Min Color: 0; 0; 0
       Min Intensity: 0
       Name: PointCloud2_real_vlp16
@@ -326,7 +330,7 @@ Visualization Manager:
       Enabled: true
       Frame Timeout: 15
       Frames:
-        Akula/base_link/VLP16:
+        Akula/base_link/velodyne-VLP16:
           Value: true
         All Enabled: true
         L_wheel:
@@ -361,6 +365,8 @@ Visualization Manager:
           Value: true
         inertial_link:
           Value: true
+        map:
+          Value: true
         odom:
           Value: true
         velodyne:
@@ -375,44 +381,64 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        odom:
-          base_link:
-            L_wheel:
-              {}
-            R_wheel:
-              {}
+        map:
+          odom:
             base_footprint:
-              {}
-            bl_castor_link:
-              bl_castor_wheel:
-                {}
-            br_castor_link:
-              br_castor_wheel:
-                {}
-            fin_link:
-              camera_link:
-                camera_optical_link:
+              base_link:
+                L_wheel:
                   {}
-              vlp16_base_link:
-                vlp16_scan:
-                  Akula/base_link/VLP16:
+                R_wheel:
+                  {}
+                bl_castor_link:
+                  bl_castor_wheel:
                     {}
-                  velodyne:
+                br_castor_link:
+                  br_castor_wheel:
                     {}
-            fl_castor_link:
-              fl_castor_wheel:
-                {}
-            fr_castor_link:
-              fr_castor_wheel:
-                {}
-            inertial_link:
-              {}
+                fin_link:
+                  camera_link:
+                    camera_optical_link:
+                      {}
+                  vlp16_base_link:
+                    vlp16_scan:
+                      Akula/base_link/velodyne-VLP16:
+                        {}
+                      velodyne:
+                        {}
+                fl_castor_link:
+                  fl_castor_wheel:
+                    {}
+                fr_castor_link:
+                  fr_castor_wheel:
+                    {}
+                inertial_link:
+                  {}
       Update Interval: 0
+      Value: true
+    - Alpha: 0.699999988079071
+      Class: rviz_default_plugins/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /map
+      Update Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /map_updates
+      Use Timestamp: false
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -452,25 +478,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 26.212299346923828
+      Distance: 13.440898895263672
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 3.38210129737854
-        Y: -0.42298948764801025
-        Z: -0.013525417074561119
+        X: 1.155518889427185
+        Y: -2.705071449279785
+        Z: -0.2583002746105194
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.2347970008850098
+      Pitch: 1.4047973155975342
       Target Frame: vlp16_scan
       Value: Orbit (rviz)
-      Yaw: 3.0253825187683105
+      Yaw: 1.8303792476654053
     Saved:
       - Class: rviz_default_plugins/Orbit
         Distance: 12.624261856079102

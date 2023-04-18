@@ -49,7 +49,17 @@ def generate_launch_description():
         output='screen')
     
     sim_lidar_static_tf_pub = ExecuteProcess(
-        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "-1.57079632679", "0", "0", "vlp16_scan", "velodyne"], #Akula/base_link/velodyne-VLP16
+        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "-1.57079632679", "0", "0", "vlp16_scan", "Akula/base_link/velodyne-VLP16"], #Akula/base_link/velodyne-VLP16
+        output='screen'
+    )
+
+    real_lidar_static_tf_pub = ExecuteProcess(
+        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "vlp16_scan", "velodyne"],
+        output='screen'
+    )
+
+    odom_static_tf_pub = ExecuteProcess(
+        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "odom", "base_footprint"],
         output='screen'
     )
     
@@ -57,6 +67,8 @@ def generate_launch_description():
         robot_state_publisher_node,
         joint_state_publisher_gui,
         sim_lidar_static_tf_pub,
+        real_lidar_static_tf_pub,
+        # odom_static_tf_pub,
         run_rviz2
     ])
     

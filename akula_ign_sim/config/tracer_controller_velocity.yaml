@@ -13,7 +13,7 @@ tracer_controller:
     left_wheel_names: ["L_wheel_joint"]
     right_wheel_names: ["R_wheel_joint"]
 
-    wheel_separation: 0.34 # 0.34
+    wheel_separation: 0.346 # 0.34
     wheel_radius: 0.0603 # 0.16
 
     wheel_separation_multiplier: 1.0
@@ -22,7 +22,7 @@ tracer_controller:
 
     publish_rate: 50.0
     odom_frame_id: odom
-    base_frame_id: base_link
+    base_frame_id: base_footprint
     pose_covariance_diagonal : [0.001, 0.001, 0.0, 0.0, 0.0, 0.01]
     twist_covariance_diagonal : [0.001, 0.0, 0.0, 0.0, 0.0, 0.01]
 

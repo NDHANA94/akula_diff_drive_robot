@@ -47,6 +47,7 @@
     </xacro:macro>
 
     
+    <link name="base_footprint"></link>
 
     <!-- Initial Link -->
     <link name="inertial_link">
@@ -83,7 +84,7 @@
         </sensor>
     </link>
 
-    <link name="base_footprint"></link>
+    
 
 
     <!-- ************************************************** -->
