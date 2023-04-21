@@ -41,6 +41,11 @@ def generate_launch_description():
         executable='joint_state_publisher_gui',
         output='screen'
     )
+    joint_state_publisher= Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        output='screen'
+    )
 
     run_rviz2 = Node(
         package='rviz2',
@@ -65,7 +70,7 @@ def generate_launch_description():
     
     return LaunchDescription([
         robot_state_publisher_node,
-        joint_state_publisher_gui,
+        joint_state_publisher,
         sim_lidar_static_tf_pub,
         real_lidar_static_tf_pub,
         # odom_static_tf_pub,

@@ -8,9 +8,9 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, ExecuteProcess, IncludeLaunchDescription
+from launch.actions import DeclareLaunchArgument, ExecuteProcess, IncludeLaunchDescription, LogInfo
 from launch.actions import RegisterEventHandler
-from launch.event_handlers import OnProcessExit
+from launch.event_handlers import OnProcessExit, OnExecutionComplete, OnProcessStart
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
@@ -23,10 +23,10 @@ def generate_launch_description():
     # akula_description_path = get_package_share_directory('akula_description')
     # velodyne_path = get_package_share_directory('velodyne')
 
-    tracer_base_bringup = ExecuteProcess(
-        cmd=['ros2', 'run', 'akula_bringup', 'tracer_bringup.bash'],
-        output='screen'
-    )
+    # tracer_base_bringup = ExecuteProcess(
+    #     cmd=['ros2', 'run', 'akula_bringup', 'tracer_bringup.bash'],
+    #     output='screen'
+    # ) # tracer can connection and tracer_base node added as systemctr service to run on boot
 
     launch_akula_description = ExecuteProcess(
         cmd=['ros2', 'launch', 'akula_description', 'display_robot.launch.py'],
@@ -45,8 +45,6 @@ def generate_launch_description():
 
 
     return LaunchDescription([
-    
-        tracer_base_bringup,
         launch_velodyne,
         launch_slam_toolbox,
         launch_akula_description,
