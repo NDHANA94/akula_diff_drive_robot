@@ -45,6 +45,12 @@ git clone --branch foxy-devel https://github.com/ros-drivers/velodyne.git
 git clone --branch foxy-devel https://github.com/SteveMacenski/slam_toolbox.git
 ```
 
+* Install tracer_ros2 pkgs
+```
+https://github.com/agilexrobotics/tracer_ros2.git
+git clone https://github.com/westonrobot/ugv_sdk.git
+```
+
 * Build the pkgs:
 ```
 cd ..
