@@ -21,16 +21,36 @@ This package is created and tested only with `ros2-foxy` version!
     `sudo apt install ros-$ROS_DISTRO-ros-ign-bridge`
 
 ### Install package
+* Install akula ros2 pkgs:
 ```
 mkdir -p tracer_ws/src
 cd tracer_ws/src
 git clone https://github.com/NDHANA94/akula_diff_drive_robot.git    
+```
+
+* Install gz_ros2_control pkg:
+```
 git clone --branch foxy https://github.com/ros-controls/gz_ros2_control.git ign_ros2_control
 rosdep install -r --from-paths . --ignore-src --rosdistro $ROS_DISTRO -y
+echo "export IGNITION_VERSION=fortress" >> ~/.bashrc
+```
+
+* Install Velodyne ros2 pkgs:
+```
+git clone --branch foxy-devel https://github.com/ros-drivers/velodyne.git
+```
+
+* Install slam_toolbox:
+```
+git clone --branch foxy-devel https://github.com/SteveMacenski/slam_toolbox.git
+```
+
+* Build the pkgs:
+```
 cd ..
-export IGNITION_VERSION=fortress
 colcon build
 ```
+
 
 ### launch ignition gazebo simulation with rviz2
 ```
