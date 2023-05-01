@@ -35,6 +35,7 @@ endif()
 
 install(DIRECTORY
   bash
+  config
   launch
   DESTINATION share/${PROJECT_NAME}/
   ) 
