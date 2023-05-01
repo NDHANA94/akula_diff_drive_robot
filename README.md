@@ -135,3 +135,7 @@ done
 ```
 ros2 launch akula_bringup akula_bringup.launch.py
 ```
+* Controlling Real robot via teleop_twist_keyboard
+```
+ros2 run teleop_twist_keyboard teleop_twist_keyboard 
+```
