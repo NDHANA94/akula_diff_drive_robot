@@ -85,10 +85,10 @@ def generate_launch_description():
         output='screen'
     )
 
-    sim_lidar_static_tf_pub = ExecuteProcess(
-        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "vlp16_scan", "VLP16"],
-        output='screen'
-    )
+    # sim_lidar_static_tf_pub = ExecuteProcess(
+    #     cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "vlp16_scan", "VLP16"],
+    #     output='screen'
+    # )
     real_lidar_static_tf_pub = ExecuteProcess(
         cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "vlp16_scan", "velodyne"], #x_rot 1.57079632679
         output='screen'
@@ -200,5 +200,4 @@ def generate_launch_description():
         ),
 
         launch_slam_toolbox,
-
         ])

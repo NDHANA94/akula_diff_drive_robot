@@ -67,7 +67,6 @@
         </collision>
     </link>
     
-
     <link name="vlp16_scan">
         <visual>
             <geometry>
