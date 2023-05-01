@@ -42,10 +42,38 @@ def generate_launch_description():
         package='ros_ign_gazebo',
         executable='create',
         output='screen',
-        arguments=['-string', doc.toxml(), '-name', 'Akula',
+        arguments=['-string', doc.toxml(), #'-name', 'Akula',
                    '-x', '0',
                    '-y', '0',
                    '-z', '0.2'])
+    
+    pointcloud2scan = Node(
+        package='pointcloud_to_laserscan', executable='pointcloud_to_laserscan_node',
+        remappings=[('cloud_in',  'vlp16_sim_scan/points'),
+                    ('scan', '/scan')],
+        parameters=[{
+            'target_frame': 'vlp16_scan',
+            'transform_tolerance': 0.01,
+            'min_height': 0.0,
+            'max_height': 1.0,
+            'angle_min': -3.1415927410125732,  # -M_PI
+            'angle_max': 3.1415927410125732,  # M_PI
+            'angle_increment': 0.0033528204075992107,  # M_PI/360.0
+            'scan_time': 0.3333,
+            'range_min': 0.7,
+            'range_max': 131.0,
+            'use_inf': True,
+            'inf_epsilon': 1.0
+        }],
+        name='pointcloud_to_laserscan'
+    )
+
+    params_file = os.path.join(this_pkg, 'config', 'mapper_params_online_async.yaml')
+    launch_slam_toolbox = ExecuteProcess(
+        cmd=['ros2', 'launch', 'slam_toolbox', 'online_async_launch.py', 'params_file:='+params_file],
+        output='screen'
+    )
+
 
     load_joint_state_controller = ExecuteProcess(
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'start', 'joint_state_broadcaster'],
@@ -58,7 +86,7 @@ def generate_launch_description():
     )
 
     sim_lidar_static_tf_pub = ExecuteProcess(
-        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "vlp16_scan", "Akula/base_footprint/VLP16"],
+        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "vlp16_scan", "VLP16"],
         output='screen'
     )
     real_lidar_static_tf_pub = ExecuteProcess(
@@ -102,6 +130,8 @@ def generate_launch_description():
         arguments=['/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo'],
         output='screen'
     )
+
+    
 
     # use time
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
@@ -152,17 +182,23 @@ def generate_launch_description():
         clock_bridge,
         node_robot_state_publisher,
         ign_spawn_entity,
-        sim_lidar_static_tf_pub,
+        # sim_lidar_static_tf_pub,
         real_lidar_static_tf_pub,
         odom_static_tf_pub,
-        bridge_lidar, bridge_lidar_points,
+        bridge_lidar, 
+        bridge_lidar_points,
         imu_bridge,
         camera_bridge, camera_info_bridge,
+        pointcloud2scan,
         run_rviz2,
+
         # Launch arguments
         DeclareLaunchArgument(
             'use_sim_time',
             default_value=use_sim_time,
-            description='If true, use simulated clock'),
+            description='If true, use simulated clock'
+        ),
+
+        launch_slam_toolbox,
 
         ])

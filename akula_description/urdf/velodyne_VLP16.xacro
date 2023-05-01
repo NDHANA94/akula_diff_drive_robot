@@ -105,11 +105,11 @@
     <!-- GAZEBO PLUGIN -->
     <gazebo reference="vlp16_scan">
         <xacro:if value="${gpu}">
-            <sensor name="VLP16" type="gpu_ray">
+            <sensor name="vlp16_scan" type="gpu_ray">
                 <pose>0 0 0 0 0 0</pose>
                 <topic>${topic}</topic>
                 <update_rate>${hz}</update_rate>
-                <frame_name>${name}</frame_name>
+                <ignition_frame_id>vlp16_scan</ignition_frame_id>
                 <ray>
                     <scan>
                         <horizontal>
@@ -143,15 +143,17 @@
                 <plugin 
                     filename="libignition-gazebo-sensors-system.so" 
                     name="ignition::gazebo::systems::Sensors">
+                    <frame_name>${name}</frame_name>
                     <render_engine>ogre</render_engine>
                 </plugin>
             </sensor>
         </xacro:if>
         <xacro:unless value="${gpu}">
-            <sensor name="VLP16" type="ray">
-                <pose>0 0 0 0 0 0</pose>
+            <sensor name="vlp16_scan" type="ray">
+                <pose relative_to="vlp16_scan">0 0 0 0 0 0</pose>
                 <topic>${topic}</topic>
                 <update_rate>${hz}</update_rate>
+                <ignition_frame_id>vlp16_scan</ignition_frame_id>
                 <ray>
                     <scan>
                         <horizontal>
