@@ -26,7 +26,7 @@ def generate_launch_description():
     # tracer_base_bringup = ExecuteProcess(
     #     cmd=['ros2', 'run', 'akula_bringup', 'tracer_bringup.bash'],
     #     output='screen'
-    # ) # tracer can connection and tracer_base node added as systemctr service to run on boot
+    # ) # tracer CAN connection and tracer_base node added as systemctr service to run on boot
 
     launch_akula_description = ExecuteProcess(
         cmd=['ros2', 'launch', 'akula_description', 'display_robot.launch.py'],
